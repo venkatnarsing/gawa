@@ -13,7 +13,8 @@ public class LambdaExpressionsDemo {
 		PerformAction mul = (a,b) -> (a*b);
 		System.out.println("(6*3) : " + mul.perform(6, 3));
 		
-
+		PerformAction div = (a,b) -> (a/b);
+		System.out.println("(6/3) : " + div.perform(6, 3));
 	}
 
 }
