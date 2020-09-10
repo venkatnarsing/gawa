@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/gawa.iml" filepath="$PROJECT_DIR$/.idea/gawa.iml" />
-      <module fileurl="file://$PROJECT_DIR$/owner/gawaowner.iml" filepath="$PROJECT_DIR$/owner/gawaowner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/owner/gawa-owner.iml" filepath="$PROJECT_DIR$/owner/gawa-owner.iml" />
     </modules>
   </component>
 </project>
