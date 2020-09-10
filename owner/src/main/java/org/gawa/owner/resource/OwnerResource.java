@@ -1,29 +1,41 @@
 package org.gawa.owner.resource;
 
-import org.gawa.owner.model.Owner;
+import org.gawa.owner.entity.Owner;
+import org.gawa.owner.model.OwnerVO;
+import org.gawa.owner.service.OwnerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class OwnerResource {
-    @RequestMapping("/owners")
-    public List<Owner> getOwners() {
-        List<Owner> owners = Arrays.asList(
-                new Owner(1, "Kiran Ch", "9-3-1", "1234567890"),
-                new Owner(2, "Jaggaiah", "9-3-2", "1234567890"),
-                new Owner(3, "Uday", "9-3-3", "1234567890")
-        );
 
-        return owners;
+    @Autowired
+    OwnerService ownerService;
+
+    @RequestMapping("/owners")
+    public List<OwnerVO> getOwners() {
+
+        List<OwnerVO> ownerVOs = new ArrayList<OwnerVO>();
+
+        List<Owner> owners = ownerService.getAllOwners();
+
+        owners.forEach(owner -> {
+            OwnerVO ownerVO = new OwnerVO(owner.getId(), owner.getFirstName() + " " + owner.getLastName(),
+                    owner.getHouseNumber(), owner.getPhoneNumber());
+            ownerVOs.add(ownerVO);
+        });
+
+        return ownerVOs;
     }
 
     @RequestMapping("/owners/{ownerId}")
-    public Owner getOwnerDetails(@PathVariable String ownerId) {
-        List<Owner> owners = getOwners();
+    public OwnerVO getOwnerDetails(@PathVariable String ownerId) {
+        List<OwnerVO> owners = getOwners();
         Integer ownerIdInt = Integer.parseInt(ownerId);
 
         return owners.stream().filter(owner -> (owner.getId() == ownerIdInt)).findFirst().get();

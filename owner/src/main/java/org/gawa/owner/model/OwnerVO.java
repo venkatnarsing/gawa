@@ -2,16 +2,16 @@ package org.gawa.owner.model;
 
 import java.io.Serializable;
 
-public class Owner implements Serializable{
+public class OwnerVO implements Serializable{
 
     private Integer id;
     private String name;
     private String houseNumber;
     private String phone;
 
-    public Owner(){}
+    public OwnerVO(){}
 
-    public Owner(Integer id, String name, String houseNumber, String phone) {
+    public OwnerVO(Integer id, String name, String houseNumber, String phone) {
         this.id = id;
         this.name = name;
         this.houseNumber = houseNumber;
